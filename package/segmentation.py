@@ -59,14 +59,29 @@ class Segmentation(RF_Models):
     # Function to output the decision tree, writes to a pdf
     # ---
     def get_tree(self):  # 1 usage
-        import pydotplus
-        dot_data = tree.export_graphviz(self.dt, out_file=None,
-                                        feature_names=["P_val"],
-                                        filled=True, rounded=True,
-                                        special_characters=True)
-        graph = pydotplus.graph_from_dot_data(dot_data)
+        import os
+        import matplotlib.pyplot as plt
+        from sklearn import tree
 
+        plt.figure(figsize=(25, 15)) 
+        
+
+        tree.plot_tree(
+            self.dt,
+            feature_names=["P_val"],
+            filled=True, 
+            rounded=True,
+            proportion=False,
+            fontsize=10
+        )
+        
         name = "segmentation_tree_"
-        if os.path.isfile(name + str(self.version) + ".pdf"):
-            ModelTools.overwrite_warning(name)
-        graph.write_pdf(name + str(self.version) + ".pdf")
+        file_name = name + str(self.version) + ".png" 
+        
+        try:
+            plt.savefig(file_name)
+            print(f"Decision Tree successfully saved to: {file_name}")
+        except Exception as e:
+            print(f"Error saving plot: {e}")
+            
+        plt.close()

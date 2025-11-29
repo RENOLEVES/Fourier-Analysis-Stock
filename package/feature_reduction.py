@@ -10,7 +10,7 @@ class Feature_Reduction(ModelTools):
 
     def correlation_reduction(self, data, thres=0.6):
         self.corr_matrix = data.corr()
-        self.corr_matrix_reduced = self.corr_matrix.map(lambda x: self.corr_filter(x, thres))
+        self.corr_matrix_reduced = self.corr_matrix.applymap(lambda x: self.corr_filter(x, thres))
         self.best_cols = self.get_best_cols(self.corr_matrix_reduced)
         self.best_features = self.top_features[self.top_features['Name'].isin(self.best_cols)]
 

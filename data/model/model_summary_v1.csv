@@ -1,13 +1,13 @@
 ,Name,Info
 0,Number of training records:,491
 1,Number of validation records:,243
-2,Number of initial features:,17
+2,Number of initial features:,18
 3,Number of removed features:,0
-4,Number of final features:,1
-5,Number of features further reduced:,2
+4,Number of final features:,5
+5,Number of features further reduced:,0
 6,Type of model:,regressor
 7,Model Complexity:,complex
 8,Modelling Algorithm:,Random Forest Regressor
 9,Performance metric:,spearman
-10,Training Score:,0.12818047704392177
-11,Validation Score:,-0.09975086342985734
+10,Training Score:,0.29311725191345117
+11,Validation Score:,0.09133738042991893
